@@ -1,3 +1,4 @@
+<button (click)="gotoNew()">új kategória</button>
 <div class="row">
   <div class="col-3 center">
     dátum
@@ -12,18 +13,33 @@
           kategória
         </div>
 </div>
-<div *ngFor="let data of this.datas" class="row">
-    <div class="col-3 center">
+<div class="row">
+    <div class="col-3">
+választott kategória
+</div>
+<div class="col-3">
+<select [(ngModel)]="choosed">
+    <option *ngFor="let cat of this.categories">{{cat.name}}</option>
+  </select>
+  </div>
+  </div>
+<div *ngFor="let data of this.datas; let i=index" >
+  <div *ngIf="data.category==choosed||choosed=='all'" class="row">
+    <div class="col-2 center">
       {{data.date}}
     </div>
-    <div class="col-3 center">
+    <div class="col-2 center">
         {{data.text}}
     </div>
-    <div class="col-3 center">
-          {{data.number}}
+    <div class="col-2 center">
+        <input type="number"name="number1" [(ngModel)]="data.number">
     </div>
-    <div class="col-3 center">
+    <div class="col-2 center">
         {{data.category}}
+  </div>
+  <div class="col-2 center">
+      <button (click)="delete(i)">törlés</button>
+  </div>
   </div>
   </div>
 <div class="row">
@@ -41,10 +57,9 @@
         </div>
         <div class="col-3 center">
             <select [(ngModel)]="category">
-              <option>étel</option>
-              <option>szórakozás</option>
-              <option>lakhatás</option>
-              </select>
+              <option *ngFor="let cat of this.categories">{{cat.name}}</option>
+
+            </select>
             
           </div>
   </div>
