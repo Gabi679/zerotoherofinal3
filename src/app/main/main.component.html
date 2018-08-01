@@ -1,21 +1,22 @@
-<button (click)="gotoNew()">új kategória</button>
+<button (click)="changeLanguage()">{{'change'| translate}}</button>
+<button (click)="gotoNew()">{{'new'| translate}}</button>
 <div class="row">
   <div class="col-3 center">
-    dátum
+      {{'date'| translate}}
   </div>
   <div class="col-3 center">
-      megjegyzés 
+      {{'option'| translate}} 
     </div>
     <div class="col-3 center">
-        költség
+        {{'price'| translate}}
       </div>
       <div class="col-3 center">
-          kategória
+          {{'category'| translate}}
         </div>
 </div>
 <div class="row">
     <div class="col-3">
-választott kategória
+        {{'choosed'| translate}}
 </div>
 <div class="col-3">
 <select [(ngModel)]="choosed">
@@ -38,7 +39,7 @@ választott kategória
         {{data.category}}
   </div>
   <div class="col-2 center">
-      <button (click)="delete(i)">törlés</button>
+      <button (click)="delete(i)">{{'delete'| translate}}</button>
   </div>
   </div>
   </div>
@@ -66,7 +67,17 @@ választott kategória
   <div class="row"
   >
   <div class="col-3 center">
-      <button (click)="add()">Rögzítés</button>
+      <button (click)="add()">{{'add'| translate}}</button>
     </div>
-
+    <div class="row">
+        <div class="col-md-6">
+          <div style="display: block;">
+          <canvas baseChart width="400" height="400"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [chartType]="lineChartType"></canvas>
+          </div>
+        </div>
+</div>      
 

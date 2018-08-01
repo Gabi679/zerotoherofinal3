@@ -5,18 +5,23 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { NewComponent } from './new/new.component';
+import { ChartsModule } from 'ng2-charts';
+import { TranslatePipe } from './translate.pipe';
+import { TranslationService } from "./translation.service";
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    NewComponent
+    NewComponent,
+    TranslatePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
-  providers: [],
+  providers: [TranslationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

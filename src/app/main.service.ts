@@ -22,5 +22,5 @@ export class MainService {
   getCategories(){
     return this.categories;
   }
-
+ 
 }

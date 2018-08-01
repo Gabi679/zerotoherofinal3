@@ -1,12 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { MainService } from '../main.service'
+import { TranslationService } from '../translation.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  public lineChartData:Array<any> = [
+    {data: [],
+       label: 'költésgek'},
+  ];
+  public lineChartLabels:Array<any> = [];
+  public lineChartOptions:any = {
+    responsive: true
+  };
+  public lineChartType:string = 'line';
+  
   text;
   number1;
   date;
@@ -14,7 +25,7 @@ export class MainComponent implements OnInit {
   category;
   categories;
   datas=[]
-  constructor(private router:Router, private service: MainService) { }
+  constructor(private router:Router, private service: MainService, private trans: TranslationService) { }
 
   ngOnInit() {
     this.categories=this.service.getCategories();
@@ -26,6 +37,8 @@ export class MainComponent implements OnInit {
       date: this.date,
       category: this.category
     };
+    this.lineChartData[0].data.push(this.number1);
+    this.lineChartLabels.push(this.date);
     this.datas.push(data);
 
   }
@@ -41,6 +54,13 @@ export class MainComponent implements OnInit {
       }
     
   }
-  
+  changeLanguage(){
+    if(this.trans.language=='eng'){
+      this.trans.language='hun';
+    }else{
+      this.trans.language='eng';
+    }
+  }
+
 
 }
