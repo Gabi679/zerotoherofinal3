@@ -9,6 +9,7 @@ export class MainComponent implements OnInit {
   text;
   number1;
   date;
+  category;
   datas=[{
     
   }]
@@ -20,7 +21,8 @@ export class MainComponent implements OnInit {
     let data={
       number: this.number1,
       text: this.text,
-      date: this.date
+      date: this.date,
+      category: this.category
     };
     this.datas.push(data);
 

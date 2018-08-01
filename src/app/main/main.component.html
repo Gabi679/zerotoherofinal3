@@ -8,17 +8,23 @@
     <div class="col-3 center">
         költség
       </div>
+      <div class="col-3 center">
+          kategória
+        </div>
 </div>
 <div *ngFor="let data of this.datas" class="row">
-    <div class="col-4 center">
+    <div class="col-3 center">
       {{data.date}}
     </div>
-    <div class="col-4 center">
+    <div class="col-3 center">
         {{data.text}}
     </div>
-    <div class="col-4 center">
+    <div class="col-3 center">
           {{data.number}}
     </div>
+    <div class="col-3 center">
+        {{data.category}}
+  </div>
   </div>
 <div class="row">
     <div class="col-3 center">
@@ -34,8 +40,18 @@
           
         </div>
         <div class="col-3 center">
-            <button (click)="add()">Rögzítés</button>
+            <select [(ngModel)]="category">
+              <option>étel</option>
+              <option>szórakozás</option>
+              <option>lakhatás</option>
+              </select>
+            
           </div>
   </div>
+  <div class="row"
+  >
+  <div class="col-3 center">
+      <button (click)="add()">Rögzítés</button>
+    </div>
 
 
